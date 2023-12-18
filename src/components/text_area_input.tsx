@@ -1,8 +1,8 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, ChangeEvent } from "react";
 import { InputProps } from "./W12MForm";
 import { ErrorMessage } from './error_message';
 export interface TextAreaInputProps extends InputProps {
-	onChange: ChangeEventHandler<HTMLTextAreaElement>;
+	onChange: ChangeEventHandler<HTMLTextAreaElement> | any;
 	size: {
 		rows: number;
 		cols: number;
@@ -15,6 +15,11 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 		return props.submitted? props.validate(props.title, props.regex, props.value, props.message) : "";
 	}
 	const errorMessage = validateInput();
+
+	const onChangeTextArea = (errorMessage:string) => (event: ChangeEvent<HTMLTextAreaElement>) => {
+		props.onChange(event, errorMessage);
+	}
+
 	return (
     <>
         <label htmlFor={props.role}>{props.title}</label>
@@ -22,7 +27,8 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 					rows={props.size.rows}
 					cols={props.size.cols}
 					value={props.value}
-					onChange= {props.onChange}  />
+					onChange={onChangeTextArea(errorMessage)}  
+					 />
     {errorMessage !== "" &&
 		<ErrorMessage message = {errorMessage}/>
 		}

@@ -29,7 +29,9 @@ const W12MForm = () => {
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
-		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
+		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>, errorMesssage: string) {
+			console.log(errorMesssage);
+		event.preventDefault();
 		setInput((currentData) =>
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
