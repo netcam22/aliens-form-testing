@@ -5,8 +5,8 @@ import { SelectInput } from './select_input';
 import { TextAreaInput } from './text_area_input';
 import { Output } from './output';
 import { SubmitButton } from './submit_button';
-import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, 
-initialValues, FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
+import { formTextInput, formSelectInput, formTextAreaInput, formDataArray, initialValues,
+FormInputObject, FormSelectInputObject, FormTextAreaInputObject}
 from '../data/alien_form_data';
 import { validateInput } from "../validate/validate_input";
 export interface InputProps {
@@ -22,31 +22,57 @@ export interface InputProps {
 const W12MForm = () => {
 	
 	const [input, setInput] = useState({...initialValues});
+	const [errors, setErrors] = useState({...initialValues});
 	const [submitted, setSubmitted] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 
 	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
 		setSubmitted(true);
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
-		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>, errorMesssage: string) {
-			console.log(errorMesssage);
+		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
 		event.preventDefault();
 		setInput((currentData) =>
 			Object.assign({}, currentData, {
 				[event.target.id]: event.target.value,
 			})
 		)
+		saveErrors(event.target.id, event.target.value);
+		if(submitted) {
+			manageSubmitButton();
+		}
 	}
 
-	function validateInputField(title:string, regex: Array<RegExp>, value: string, message: Array<string>) {
-		if (submitted) {
+	function saveErrors(dataRole: string, inputValue:string) {
+
+		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
+		dataObject.role === dataRole);
+
+		if (dataObject) {
+			const errorString = validateInputField(dataObject.title, 
+				dataObject.regex, inputValue, dataObject.errorMessage);
+			setErrors((currentErrors) =>
+				Object.assign({}, currentErrors, {
+					[dataRole]: errorString,
+				})
+			)
+		}
+	}
+
+	function manageSubmitButton()  {
+		  const errorData = Object.entries(errors).reduce((acc, [key, value]) => 
+			acc = acc + value, "");
+			const disabled = errorData === ""? false: true;
+			setDisabled(disabled);
+	}
+
+	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
+		message: Array<string>) {
 		const errorMessage  = validateInput(title, regex, value, message)
 				.reduce((acc: string, message: string) => acc+"; "+message, "")
 				.replace("; ", "");
 		return errorMessage;
-		}
-		return "";
 	}
 
 	return (
@@ -101,7 +127,13 @@ const W12MForm = () => {
 			/>)
 			}
 
-			<SubmitButton buttonText = "Submit Application" onSubmitHandler = {handleSubmit}/>
+			<SubmitButton 
+			buttonText = "Submit Application" 
+			id="submitAlienDataButton" 
+			role="submitButton"
+			onSubmitHandler = {handleSubmit}
+			isDisabled = {disabled}
+			/>
 			</div>
 
 			{formDataArray.map((field: FormInputObject, i: number) => 

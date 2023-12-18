@@ -69,6 +69,13 @@ body {
   input[type=submit]:hover {
 	background-color: #45a049;
   }
+
+  input[type=submit]:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
   
   /* Clear floats after the columns */
   .row::after {

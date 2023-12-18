@@ -1,9 +1,9 @@
-import { ChangeEventHandler, ChangeEvent} from 'react';
+import { ChangeEventHandler} from 'react';
 import { InputProps} from "./W12MForm";
 import { ErrorMessage } from './error_message';
-import {  } from './W12MForm';
+
 export interface TextInputProps extends InputProps {
-	onChange: ChangeEventHandler<HTMLInputElement> | any;
+	onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 export const TextInput : React.FC<TextInputProps> = (props) => {
@@ -13,9 +13,6 @@ function validateInput() {
 }
 const errorMessage = validateInput();
 
-const onChangeText = (errorMessage:string) => (event: ChangeEvent<HTMLInputElement>) => {
-	props.onChange(event, errorMessage);
-}
 
 return (
     <>	<label htmlFor={props.role}>{props.title}</label>
@@ -23,7 +20,7 @@ return (
 			className = "valid"
 					type ='text'
 					value = {props.value}
-					onChange={onChangeText(errorMessage)} 
+					onChange={props.onChange} 
 		/>
 		{props.submitted && errorMessage !== "" &&
 		<ErrorMessage message = {errorMessage}/>

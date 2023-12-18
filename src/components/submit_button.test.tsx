@@ -7,12 +7,15 @@ test('When user clicks the button, the handleSubmit function is called', async (
 	const mockSubmit = jest.fn();
 	const requiredProps = {
 		buttonText: "",
-		onSubmitHandler: mockSubmit
+		onSubmitHandler: mockSubmit,
+		isDisabled: false,
+		id: "submitAlienDataButton",
+		role: "submitAlienDataButton"
 	};
 
 	render(<SubmitButton {...requiredProps}/>);
 	
-	const submitButton = screen.getByRole("submitButton");
+	const submitButton = screen.getByRole("submitAlienDataButton");
     expect(submitButton).toBeInTheDocument();
 
 	if (submitButton) {

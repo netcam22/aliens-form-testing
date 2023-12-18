@@ -3,5 +3,5 @@ export interface ErrorMessageProps{
 }
 
 export const ErrorMessage : React.FC<ErrorMessageProps> = ({message}) => (
-    <span className = "error">Error: {message}</span>
+    <span className = "error">{message}</span>
 );
