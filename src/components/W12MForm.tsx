@@ -24,7 +24,6 @@ const W12MForm = () => {
 	const [input, setInput] = useState({...initialValues});
 	const [errors, setErrors] = useState({...initialValues});
 	const [submitted, setSubmitted] = useState(false);
-	const [disabled, setDisabled] = useState(false);
 
 	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
 		setSubmitted(true);
@@ -39,9 +38,6 @@ const W12MForm = () => {
 			})
 		)
 		saveErrors(event.target.id, event.target.value);
-		if(submitted) {
-			manageSubmitButton();
-		}
 	}
 
 	function saveErrors(dataRole: string, inputValue:string) {
@@ -58,13 +54,6 @@ const W12MForm = () => {
 				})
 			)
 		}
-	}
-
-	function manageSubmitButton()  {
-		  const errorData = Object.entries(errors).reduce((acc, [key, value]) => 
-			acc = acc + value, "");
-			const disabled = errorData === ""? false: true;
-			setDisabled(disabled);
 	}
 
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
@@ -132,7 +121,7 @@ const W12MForm = () => {
 			id="submitAlienDataButton" 
 			role="submitButton"
 			onSubmitHandler = {handleSubmit}
-			isDisabled = {disabled}
+			errorMessages = {errors}
 			/>
 			</div>
 
