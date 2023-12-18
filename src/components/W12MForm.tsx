@@ -141,7 +141,7 @@ const W12MForm = () => {
 				key = {formDataArray[i].id}
 				title = {formDataArray[i].title} 
 				value = {input[formDataArray[i].role]} 
-				message = {formDataArray[i].errorMessage}
+				errorMessage = {errors[formDataArray[i].role]}
 				role = {formDataArray[i].role} 
 				regex={formDataArray[i].regex} 
 				validate = {validateInputField} submitted={submitted}/>

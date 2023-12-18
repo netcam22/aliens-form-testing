@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SelectInput } from './select_input';
-import { SelectInputProps } from "../components/select_input";
+import { SelectInputProps } from "./select_input";
 
 test('renders form label for maths question', () => {
 
