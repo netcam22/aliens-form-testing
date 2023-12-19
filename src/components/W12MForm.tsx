@@ -26,7 +26,10 @@ const W12MForm = () => {
 	const [submitted, setSubmitted] = useState(false);
 
 	function handleSubmit(event: MouseEvent<HTMLButtonElement>) {
-		setSubmitted(true);
+		if (!submitted) {
+			saveAllErrors();
+			setSubmitted(true);
+		}		
 	}
 
 	function handleChange(event: ChangeEvent<HTMLInputElement> | 
@@ -40,21 +43,32 @@ const W12MForm = () => {
 		saveErrors(event.target.id, event.target.value);
 	}
 
-	function saveErrors(dataRole: string, inputValue:string) {
+	function setInputError(dataRole: string, errorString: string) {
+		setErrors((currentErrors) =>
+				Object.assign({}, currentErrors, {
+					[dataRole]: errorString,
+				})
+		)
+	}
 
+	function saveErrors(dataRole: string, inputValue:string) {
 		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
 		dataObject.role === dataRole);
 
 		if (dataObject) {
 			const errorString = validateInputField(dataObject.title, 
 				dataObject.regex, inputValue, dataObject.errorMessage);
-			setErrors((currentErrors) =>
-				Object.assign({}, currentErrors, {
-					[dataRole]: errorString,
-				})
-			)
+			setInputError(dataRole, errorString);
 		}
 	}
+
+	function saveAllErrors() {
+		formDataArray.forEach((dataObject: FormInputObject) => {
+			const errorString = validateInputField(dataObject.title, 
+				dataObject.regex, input[dataObject.role], dataObject.errorMessage);
+				setInputError(dataObject.role, errorString);
+		});
+	}	
 
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
 		message: Array<string>) {
