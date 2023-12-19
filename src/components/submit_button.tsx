@@ -7,6 +7,7 @@ interface SubmitButtonProps {
 	errorMessages: InitialValue;
 	id: string;
 	role: string;
+	submitted: boolean;
 }
 
 function manageSubmitButton(errorMessages: InitialValue)  {
@@ -16,14 +17,14 @@ function manageSubmitButton(errorMessages: InitialValue)  {
 }
 
 export const SubmitButton : React.FC<SubmitButtonProps> =
- ({buttonText, onSubmitHandler, errorMessages, id, role}) => {
-	const disableButton = manageSubmitButton(errorMessages);
+ ({buttonText, onSubmitHandler, errorMessages, id, role, submitted}) => {
+	const disableButton = submitted? manageSubmitButton(errorMessages): false;
 	return (
 	<button
-	className = "submitButton"
-	id="submitAlienDataButton" 
+	className = {role}
+	id={id} 
 	// eslint-disable-next-line jsx-a11y/aria-role
-	role="submitAlienDataButton" 
+	role={id} 
 	disabled={disableButton}
 	onClick={onSubmitHandler}>{buttonText}</ button>
 	);

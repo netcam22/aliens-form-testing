@@ -30,16 +30,6 @@ const W12MForm = () => {
 		}		
 	}
 
-	function handleChange(event: ChangeEvent<HTMLInputElement> | 
-		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
-		event.preventDefault();
-		setInput((currentData) =>
-			Object.assign({}, currentData, {
-				[event.target.id]: event.target.value,
-			})
-		)
-		saveInputErrors(event.target.id, event.target.value);
-	}
 
 	function setInputError(dataRole: string, errorString: string) {
 		setErrors((currentErrors) =>
@@ -52,7 +42,6 @@ const W12MForm = () => {
 	function saveInputErrors(dataRole: string, inputValue:string) {
 		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
 		dataObject.role === dataRole);
-
 		if (dataObject) {
 			const errorString = validateInputField(dataObject.title, 
 				dataObject.regex, inputValue, dataObject.errorMessage);
@@ -66,7 +55,18 @@ const W12MForm = () => {
 				dataObject.regex, input[dataObject.role], dataObject.errorMessage);
 				setInputError(dataObject.role, errorString);
 		});
-	}	
+	}
+
+	function handleChange(event: ChangeEvent<HTMLInputElement> | 
+		ChangeEvent<HTMLTextAreaElement> | ChangeEvent<HTMLSelectElement>) {
+		event.preventDefault();
+		setInput((currentData) =>
+			Object.assign({}, currentData, {
+				[event.target.id]: event.target.value,
+			})
+		)
+		saveInputErrors(event.target.id, event.target.value);
+	}
 
 	function validateInputField(title:string, regex: Array<RegExp>, value: string, 
 		message: Array<string>) {
@@ -99,7 +99,7 @@ const W12MForm = () => {
 				<SelectInput
 				key = {formSelectInput[i].id}
 				title = {formSelectInput[i].title} 
-				errorMessage = {errors[formTextInput[i].role]}
+				errorMessage = {errors[formSelectInput[i].role]}
 				value={input[formSelectInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted} 
@@ -113,7 +113,7 @@ const W12MForm = () => {
 			<TextAreaInput 
 				key = {formSelectInput[i].id}
 				title = {formTextAreaInput[i].title} 
-				errorMessage = {errors[formTextInput[i].role]}
+				errorMessage = {errors[formTextAreaInput[i].role]}
 				value={input[formTextAreaInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted} 
@@ -126,6 +126,7 @@ const W12MForm = () => {
 			buttonText = "Submit Application" 
 			id="submitAlienDataButton" 
 			role="submitButton"
+			submitted={submitted}
 			onSubmitHandler = {handleSubmit}
 			errorMessages = {errors}
 			/>
