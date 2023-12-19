@@ -40,7 +40,7 @@ const W12MForm = () => {
 				[event.target.id]: event.target.value,
 			})
 		)
-		saveErrors(event.target.id, event.target.value);
+		saveInputErrors(event.target.id, event.target.value);
 	}
 
 	function setInputError(dataRole: string, errorString: string) {
@@ -51,7 +51,7 @@ const W12MForm = () => {
 		)
 	}
 
-	function saveErrors(dataRole: string, inputValue:string) {
+	function saveInputErrors(dataRole: string, inputValue:string) {
 		const dataObject = formDataArray.find((dataObject: FormInputObject) =>
 		dataObject.role === dataRole);
 
