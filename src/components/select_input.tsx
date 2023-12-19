@@ -9,11 +9,6 @@ export interface SelectInputProps extends InputProps{
 
 export const SelectInput : React.FC<SelectInputProps> = (props) => {
 
-	function validateInput() {
-		return props.validate(props.title, props.regex, props.value, props.message);
-	}
-	const errorMessage = validateInput();
-
 	return (
     <>
         <label htmlFor={props.role}>{props.title}</label>
@@ -22,8 +17,8 @@ export const SelectInput : React.FC<SelectInputProps> = (props) => {
 			{props.options.map((option, index) => 
 			<SelectOption key = {index.toString()} optionValue ={option} />)}
 		</select>
-		{props.submitted && errorMessage !== "" &&
-		<ErrorMessage message = {errorMessage}/>
+		{props.submitted && props.errorMessage !== "" &&
+		<ErrorMessage message = {props.errorMessage}/>
 		}
     </> )
 }

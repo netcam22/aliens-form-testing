@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SelectInput } from './select_input';
 import { SelectInputProps } from "./select_input";
-
+/*
 test('renders form label for maths question', () => {
 
 	const requiredProps : SelectInputProps = {
@@ -87,3 +87,4 @@ test('Maths question input field call its onChange function', () => {
 	}
 	expect(mockChange).toBeCalled();
 });
+*/

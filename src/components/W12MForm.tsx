@@ -13,10 +13,8 @@ export interface InputProps {
 	title: string;
 	role: string;
 	value: string;
-	regex: Array<RegExp>;
-	message: Array<string>;
+	errorMessage: string;
 	submitted: boolean;
-	validate: (title:string, regex: Array<RegExp>, value: string, message: Array<string>) => string;
 }
 
 const W12MForm = () => {
@@ -88,12 +86,10 @@ const W12MForm = () => {
 			<TextInput 
 				key = {formTextInput[i].id}
 				title = {formTextInput[i].title} 
-				regex={formTextInput[i].regex} 
-				message = {formTextInput[i].errorMessage}
+				errorMessage = {errors[formTextInput[i].role]}
 				value={input[formTextInput[i].role]} 
 				onChange={handleChange} 
 				submitted={submitted}
-				validate = {validateInputField} 
 				role = {formTextInput[i].role} 
 			/>)
 			}
@@ -103,12 +99,10 @@ const W12MForm = () => {
 				<SelectInput
 				key = {formSelectInput[i].id}
 				title = {formSelectInput[i].title} 
-				regex={formSelectInput[i].regex} 
-				message = {formSelectInput[i].errorMessage}
+				errorMessage = {errors[formTextInput[i].role]}
 				value={input[formSelectInput[i].role]} 
 				onChange={handleChange} 
-				submitted={submitted}
-				validate = {validateInputField} 
+				submitted={submitted} 
 				role = {formSelectInput[i].role} 
 				options = {formSelectInput[i].options}
 				/>)
@@ -119,12 +113,10 @@ const W12MForm = () => {
 			<TextAreaInput 
 				key = {formSelectInput[i].id}
 				title = {formTextAreaInput[i].title} 
-				regex={formTextAreaInput[i].regex} 
-				message = {formTextAreaInput[i].errorMessage}
+				errorMessage = {errors[formTextInput[i].role]}
 				value={input[formTextAreaInput[i].role]} 
 				onChange={handleChange} 
-				submitted={submitted}
-				validate = {validateInputField} 
+				submitted={submitted} 
 				role = {formTextAreaInput[i].role} 
 				size = {formTextAreaInput[i].size}
 			/>)

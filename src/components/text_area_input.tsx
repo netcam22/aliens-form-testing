@@ -11,11 +11,6 @@ export interface TextAreaInputProps extends InputProps {
 
 export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 
-	function validateInput() {
-		return props.submitted? props.validate(props.title, props.regex, props.value, props.message) : "";
-	}
-	const errorMessage = validateInput();
-
 	return (
     <>
         <label htmlFor={props.role}>{props.title}</label>
@@ -25,8 +20,8 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 					value={props.value}
 					onChange={props.onChange}  
 					/>
-    {errorMessage !== "" &&
-		<ErrorMessage message = {errorMessage}/>
+    {props.errorMessage !== "" &&
+		<ErrorMessage message = {props.errorMessage}/>
 		}
 	</>
 	 )

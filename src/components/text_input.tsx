@@ -8,12 +8,6 @@ export interface TextInputProps extends InputProps {
 
 export const TextInput : React.FC<TextInputProps> = (props) => {
 
-function validateInput() {
-	return props.submitted? props.validate(props.title, props.regex, props.value, props.message) : "";
-}
-const errorMessage = validateInput();
-
-
 return (
     <>	<label htmlFor={props.role}>{props.title}</label>
         <input id ={props.role}
@@ -22,8 +16,8 @@ return (
 					value = {props.value}
 					onChange={props.onChange} 
 		/>
-		{props.submitted && errorMessage !== "" &&
-		<ErrorMessage message = {errorMessage}/>
+		{props.submitted && props.errorMessage !== "" &&
+		<ErrorMessage message = {props.errorMessage}/>
 		}
     </> 
 	);
