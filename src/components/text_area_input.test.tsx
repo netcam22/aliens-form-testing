@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { TextAreaInput } from './text_area_input';
 import { fireEvent } from '@testing-library/react';
-/*
+
 test('renders form label for reasons for sparing', () => {
 
 	const requiredProps = {
@@ -9,10 +9,8 @@ test('renders form label for reasons for sparing', () => {
 		role: "reasonsForSparing",
 		value: "Because we are a special species",
 		onChange: () => {},
-		regex: [/^.{17,153}$/gi],
-		message: ["Must be between 17 and 153 characters"],
+		errorMessage: "Must be between 17 and 153 characters",
 		submitted: false,
-		validate: () =>  "",
 		size: {rows: 5, cols: 20}
 	};
 	render(<TextAreaInput {...requiredProps}/>);
@@ -31,10 +29,8 @@ test('Species name Input field exists', () => {
 		role: "reasonsForSparing",
 		value: "",
 		onChange: () => {},
-		regex: [/^.{17,153}$/gi],
-		message: ["Must be between 17 and 153 characters"],
+		errorMessage: "Must be between 17 and 153 characters",
 		submitted: false,
-		validate: () =>  "",
 		size: {rows: 5, cols: 20}
 	};
 	//Act
@@ -51,10 +47,8 @@ test('Reasons For Sparing input field displays value passed in through props', (
 		role: "reasonsForSparing",
 		value: "Because we are a special species",
 		onChange: () => {},
-		regex: [/^.{17,153}$/gi],
-		message: ["Must be between 17 and 153 characters"],
+		errorMessage: "Must be between 17 and 153 characters",
 		submitted: false,
-		validate: () =>  "",
 		size: {rows: 5, cols: 20}
 	};
 	//Act
@@ -72,10 +66,8 @@ test('Reasons For Sparing input field call its onChange function', () => {
 		role: "reasonsForSparing",
 		value: "",
 		onChange: mockChange,
-		regex: [/^.{17,153}$/gi],
-		message: ["Must be between 17 and 153 characters"],
+		errorMessage: "Must be between 17 and 153 characters",
 		submitted: false,
-		validate: () =>  "",
 		size: {rows: 5, cols: 20}
 	};
 	//Act
@@ -87,4 +79,3 @@ test('Reasons For Sparing input field call its onChange function', () => {
 	}
 	expect(mockChange).toBeCalled();
 });
-*/

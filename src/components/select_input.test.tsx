@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { SelectInput } from './select_input';
 import { SelectInputProps } from "./select_input";
-/*
+
 test('renders form label for maths question', () => {
 
 	const requiredProps : SelectInputProps = {
@@ -9,10 +9,8 @@ test('renders form label for maths question', () => {
 		role: "mathsAnswer",
 		value: "4",
 		onChange: () => {},
-		regex: [/^4{1}$/],
-		message: ['"4" must be selected'],
+		errorMessage: '"4" must be selected',
 		submitted: false,
-		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	render(<SelectInput {...requiredProps}/>);
@@ -30,10 +28,8 @@ test('Maths question Input field exists', () => {
 		role: "mathsAnswer",
 		value: "4",
 		onChange: () => {},
-		regex: [/^4{1}$/],
-		message: ['"4" must be selected'],
+		errorMessage: '"4" must be selected',
 		submitted: false,
-		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
@@ -50,10 +46,8 @@ test('Maths question input field displays value passed in through props', () => 
 		role: "mathsAnswer",
 		value: "99",
 		onChange: () => {},
-		regex: [/^4{1}$/],
-		message: ['"4" must be selected'],
+		errorMessage: '"4" must be selected',
 		submitted: false,
-		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
@@ -72,10 +66,8 @@ test('Maths question input field call its onChange function', () => {
 		role: "mathsAnswer",
 		value: "",
 		onChange: mockChange,
-		regex: [/^4{1}$/],
-		message: ['"4" must be selected'],
+		errorMessage: '"4" must be selected',
 		submitted: false,
-		validate: () =>  "",
 		options: ["Not 4", "0", "4", "99", "4 million"]
 	};
 	//Act
@@ -87,4 +79,3 @@ test('Maths question input field call its onChange function', () => {
 	}
 	expect(mockChange).toBeCalled();
 });
-*/

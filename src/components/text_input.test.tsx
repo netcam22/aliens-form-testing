@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TextInput } from './text_input';
 import { TextInputProps } from "./text_input";
-/*
+
 test('renders form label for species name', () => {
 	 //Arrange
 	const requiredProps: TextInputProps = {
@@ -9,10 +9,8 @@ test('renders form label for species name', () => {
 		role: "speciesName",
 		value: "Woman",
 		onChange: () => {},
-		regex: [/^.{3,23}$/gi, /^[a-z]+$/gi],
-    	message: ["must be between 3 and 23 characters", "no numbers or special characters allowed"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -30,10 +28,8 @@ test('Species name Input field exists', () => {
 		role: "speciesName",
 		value: "",
 		onChange: () => {},
-		regex: [/^.{3,23}$/gi, /^[a-z]+$/gi],
-    	message: ["must be between 3 and 23 characters", "no numbers or special characters allowed"],
-		submitted: false,
-		validate: () => ""
+    	errorMessage: "Species Name required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -49,10 +45,8 @@ test('Species name input field displays value passed in through props', () => {
 		role: "speciesName",
 		value: "Woman",
 		onChange: () => {},
-		regex: [/^.{3,23}$/gi, /^[a-z]+$/gi],
-    	message: ["must be between 3 and 23 characters", "no numbers or special characters allowed"],
-		submitted: false,
-		validate: () => ""
+    	errorMessage: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -69,10 +63,8 @@ test('Species name input field call its onChange function', () => {
 		role: "speciesName",
 		value: "",
 		onChange: mockChange,
-		regex: [/^.{3,23}$/gi, /^[a-z]+$/gi],
-    	message: ["must be between 3 and 23 characters", "no numbers or special characters allowed"],
-		submitted: false,
-		validate: () => ""
+    	errorMessage: "Species Name required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -92,10 +84,8 @@ test('renders form label for planet name', () => {
 		role: "planetName",
 		value: "Mars",
 		onChange: () => {},
-		regex: [/^.{2,49}$/gi, /^[a-z0-9]+$/gi],
-    	message: ["must be between 2 and 49 characters", "no special characters"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -113,10 +103,8 @@ test('Planet name Input field exists', () => {
 		role: "planetName",
 		value: "",
 		onChange: () => {},
-		regex: [/^.{2,49}$/gi, /^[a-z0-9]+$/gi],
-    	message: ["must be between 2 and 49 characters", "no special characters"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "Planet Name required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -132,10 +120,8 @@ test('Planet name input field displays value passed in through props', () => {
 		role: "planetName",
 		value: "Mars",
 		onChange: () => {},
-		regex: [/^.{2,49}$/gi, /^[a-z0-9]+$/gi],
-    	message: ["must be between 2 and 49 characters", "no special characters"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -152,10 +138,8 @@ test('Planet name input field calls its onChange function', () => {
 		role: "planetName",
 		value: "",
 		onChange: mockChange,
-		regex: [/^.{2,49}$/gi, /^[a-z0-9]+$/gi],
-    	message: ["must be between 2 and 49 characters", "no special characters"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "Planet Name required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -174,10 +158,8 @@ test('renders form label for number of beings', () => {
 		role: "numberOfBeings",
 		value: "999",
 		onChange: () => {},
-		regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
-    	message: ["numbers ONLY", "must be at least 1,000,000,000"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "must be at least 1,000,000,000",
+		submitted: false
 	};
 	render(<TextInput {...requiredProps}/>);
 	//Act
@@ -195,10 +177,8 @@ test('Number of Beings Input field exists', () => {
 		role: "numberOfBeings",
 		value: "",
 		onChange: () => {},
-		regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
-    	message: ["numbers ONLY", "must be at least 1,000,000,000"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "Number of Beings required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -214,10 +194,8 @@ test('Number of Beings input field displays value passed in through props', () =
 		role: "numberOfBeings",
 		value: "100000000000",
 		onChange: () => {},
-		regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
-    	message: ["numbers ONLY", "must be at least 1,000,000,000"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -234,10 +212,8 @@ test('Number of Beings input field calls its onChange function', () => {
 		role: "numberOfBeings",
 		value: "",
 		onChange: mockChange,
-		regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
-    	message: ["numbers ONLY", "must be at least 1,000,000,000"],
-		submitted: false,
-		validate: () =>  ""
+    	errorMessage: "Number of Beings required",
+		submitted: false
 	};
 	//Act
 	render(<TextInput {...requiredProps}/>);
@@ -250,23 +226,20 @@ test('Number of Beings input field calls its onChange function', () => {
 });
 
 test('Number of Beings displays error message under input field if submitted value is invalid', () => {
-    //Arrange
-	const mockValidate = jest.fn();
+    //Arrange;
 	const requiredProps = {
 		title: "Number of Beings",
 		role: "numberOfBeings",
 		value: "5",
 		onChange: () => {},
-		regex: [/^[0-9]+$/g, /^[0-9]{10,}$/g],
-    	message: ["numbers ONLY", "must be at least 1,000,000,000"],
-		submitted: true,
-		validate: mockValidate
+    	errorMessage: "must be at least 1,000,000,000",
+		submitted: true
 	};
+	render(<TextInput {...requiredProps}/>);
 	//Act
-	mockValidate.mockReturnValue(["must be at least 1,000,000,000"]);
-	render(<TextInput {...requiredProps}/>)
+	const message = screen.getByText(
+		/must be at least 1,000,000,000/i
+	);
 	//Assert
-	expect(mockValidate).toBeCalled();
-	expect(mockValidate()).toStrictEqual(["must be at least 1,000,000,000"]);
+	expect(message).toBeInTheDocument();
 });
-*/
