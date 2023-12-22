@@ -84,27 +84,27 @@ const W12MForm = () => {
 			{formTextInput.map((field: FormInputObject, i: number) => 
 
 			<TextInput 
-				key = {formTextInput[i].id}
-				title = {formTextInput[i].title} 
-				errorMessage = {errors[formTextInput[i].role]}
-				value={input[formTextInput[i].role]} 
+				key = {field.id}
+				title = {field.title} 
+				errorMessage = {errors[field.role]}
+				value={input[field.role]} 
 				onChange={handleChange} 
 				submitted={submitted}
-				role = {formTextInput[i].role} 
+				role = {field.role} 
 			/>)
 			}
 
 			{formSelectInput.map((field: FormSelectInputObject, i: number) => 
 
 				<SelectInput
-				key = {formSelectInput[i].id}
-				title = {formSelectInput[i].title} 
-				errorMessage = {errors[formSelectInput[i].role]}
-				value={input[formSelectInput[i].role]} 
+				key = {field.id}
+				title = {field.title} 
+				errorMessage = {errors[field.role]}
+				value={input[field.role]} 
 				onChange={handleChange} 
 				submitted={submitted} 
-				role = {formSelectInput[i].role} 
-				options = {formSelectInput[i].options}
+				role = {field.role} 
+				options = {field.options}
 				/>)
 			}
 
@@ -134,12 +134,12 @@ const W12MForm = () => {
 
 			{formDataArray.map((field: FormInputObject, i: number) => 
 			<Output 
-				key = {formDataArray[i].id}
-				title = {formDataArray[i].title} 
-				value = {input[formDataArray[i].role]} 
-				errorMessage = {errors[formDataArray[i].role]}
-				role = {formDataArray[i].role} 
-				regex={formDataArray[i].regex} 
+				key = {field.id}
+				title = {field.title} 
+				value = {input[field.role]} 
+				errorMessage = {errors[field.role]}
+				role = {field.role} 
+				regex={field.regex} 
 				validate = {validateInputField} submitted={submitted}/>
 			)}
 		</section>	
