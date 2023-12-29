@@ -2,7 +2,7 @@ import { ChangeEventHandler } from "react";
 import { InputProps } from "./W12MForm";
 import { ErrorMessage } from './error_message';
 export interface TextAreaInputProps extends InputProps {
-	onChange: ChangeEventHandler<HTMLTextAreaElement> | any;
+	onChange: ChangeEventHandler<HTMLTextAreaElement>;
 	size: {
 		rows: number;
 		cols: number;
