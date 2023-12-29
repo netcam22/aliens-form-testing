@@ -24,5 +24,5 @@ export const TextAreaInput : React.FC<TextAreaInputProps> = (props) => {
 		<ErrorMessage message = {props.errorMessage}/>
 		}
 	</>
-	 )
+	)
 }
