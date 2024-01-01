@@ -8,10 +8,9 @@ test('When user clicks the button, the handleSubmit function is called', async (
 	const requiredProps = {
 		buttonText: "",
 		onSubmitHandler: mockSubmit,
-		errorMessages: {"planetName": ""},
 		id: "submitAlienDataButton",
 		role: "submitAlienDataButton",
-		submitted: false
+		disable: false
 	};
 
 	render(<SubmitButton {...requiredProps}/>);
