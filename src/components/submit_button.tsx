@@ -1,31 +1,22 @@
 import { MouseEventHandler } from "react";
-import { InitialValue } from "../data/alien_form_data";
 
 interface SubmitButtonProps {
 	buttonText: string;
 	onSubmitHandler: MouseEventHandler<HTMLButtonElement>;
-	errorMessages: InitialValue;
 	id: string;
 	role: string;
-	submitted: boolean;
-}
-
-function manageSubmitButton(errorMessages: InitialValue)  {
-	const errorData = Object.entries(errorMessages).reduce((acc, [key, value]) => 
-	  acc = acc + value, "");
-	return errorData === ""? false: true;
+	disable: boolean;
 }
 
 export const SubmitButton : React.FC<SubmitButtonProps> =
- ({buttonText, onSubmitHandler, errorMessages, id, role, submitted}) => {
-	const disableButton = submitted? manageSubmitButton(errorMessages): false;
+ ({buttonText, onSubmitHandler, id, role, disable}) => {
 	return (
 	<button
 	className = {role}
 	id={id} 
 	// eslint-disable-next-line jsx-a11y/aria-role
 	role={id} 
-	disabled={disableButton}
+	disabled={disable}
 	onClick={onSubmitHandler}>{buttonText}</ button>
 	);
  }

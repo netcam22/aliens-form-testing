@@ -10,7 +10,6 @@ test('renders title for species name in output following form submission', () =>
 		role: "speciesName",
 		regex: [/^[a-z]{3,23}$/gi],
 		errorMessage: "",
-		validate: () =>  "",
 		submitted: true,
 	};
 	//Act
@@ -30,7 +29,6 @@ test('Reasons For Sparing output does not display if there has been no submissio
 		value: "",
 		regex: [/^.{17,153}$/gi],
 		errorMessage: "Must be between 17 and 153 characters",
-		validate: () =>  "",
 		submitted: false,
 		size: {rows: 5, cols: 20}
 	};
@@ -49,7 +47,6 @@ test('Reasons For Sparing output displays if there has been submission', () => {
 		regex: [/^.{17,153}$/gi],
 		errorMessage: "",
 		submitted: true,
-		validate: () =>  "",
 		size: {rows: 5, cols: 20}
 	};
 	//Act
